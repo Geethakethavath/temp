@@ -4,27 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        let v=0
-        function i()
-       {
-          v=v+1
-          data.innerHTML=v
-       }
-    function d(){
-        if(v>0)
-       {
-         v=v-1
-       }else{
-        v=0
-       }
-         data.innerHTML=v
-    }
-    </script>
+   
 </head>
 <body>
-    <button onclick="d()"> - </button>
-    <span id="data"></span>
-    <button onclick="i()">+</button>
+    <input type="number" id="a" placeholder="Enter a" >
+   <input type="number" id="b" placeholder="Enter b" ><br>
+    <button onclick="m()">submit</button>
+    <div id="data"></div>
+      <script> 
+        function m(){
+            let a=parseInt(document.getElementById("a").value)
+            let b=parseInt(document.getElementById("b").value)
+            document.getElementById("data").innerHTML=`a+b=${a+b} <br>`+`a-b=${a-b} <br>`+`a*b=${a*b}<br>`+`a/b=${a/b}`
+        }
+    </script>
 </body>
 </html>

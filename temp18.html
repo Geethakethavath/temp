@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a=[
+            {
+                id:1,
+                name:"apple",
+                price:20
+            },
+            {
+                id:2,
+                name:"banana",
+                price:30
+            },
+            {
+                id:3,
+                name:"papaya",
+                price:40
+            }
+        ]
+       // console.log(a[0])
+       let s=""
+       for(let i=0;i<a.length;i++)
+       {
+        s+=a[i].name+" \n"
+       }
+       console.log(s)
+        const p=["ab","bc","ca"]
+        for(let i=0;i<p.length;i++)
+    {
+        console.log(p[i])
+    }
+     function g()
+     {
+        console.log("Hello")
+     }
+     g()
+     let f=()=>{console.log("hi")}
+     f()
+     let f1=()=>{
+        console.log("heyyyy")
+     }
+     f1()
+     let f2=f1
+    console.log(f2)
+     p.forEach((pad,index,b)=>console.log(pad,index,b))
+
+
+    </script>
+
+    
+</body>
+</html>

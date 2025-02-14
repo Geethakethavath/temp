@@ -3,20 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   
+    <title>HDFC Bank</title>
 </head>
 <body>
-    <input type="number" id="a" placeholder="Enter a" >
-   <input type="number" id="b" placeholder="Enter b" ><br>
-    <button onclick="m()">submit</button>
-    <div id="data"></div>
-      <script> 
-        function m(){
-            let a=parseInt(document.getElementById("a").value)
-            let b=parseInt(document.getElementById("b").value)
-            document.getElementById("data").innerHTML=`a+b=${a+b} <br>`+`a-b=${a-b} <br>`+`a*b=${a*b}<br>`+`a/b=${a/b}`
+  <script>
+    let users = [];
+    let user = {}; 
+
+    document.write("<div id='root'></div>");
+
+    function saveData() {
+      let amount = Number(document.getElementById("amount").value);
+      let type = document.getElementById("type").value;
+
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].email === user.email) {
+          if (type === "1") { 
+            users[i].balance += amount; 
+          } 
+          else if (type === "2") { 
+            users[i].balance -= amount; 
+          } 
+          else if (type === "3") { 
+            users[i].balance -= amount;
+
+            for (let j = 0; j < users.length; j++) {
+              if (users[j].email !== user.email) { 
+                users[j].balance += amount;
+                alert(`${amount} transferred successfully`);
+                break;
+              }
+            }
+          }
+
+          user.balance = users[i].balance; 
+          document.getElementById("spBalance").innerHTML = user.balance;
+          break;
         }
-    </script>
+      }
+    }
+
+    function home() {
+      let str = `
+        <h3>Welcome ${user.name}</h3>
+        <button onclick='showLogin()'>Logout</button>
+        <p>
+          <select id="type">
+            <option value=0>--Select Transaction--</option>
+            <option value=1>Deposit</option>
+            <option value=2>Withdraw</option>
+            <option value=3>Transfer</option>
+          </select>
+        </p>
+        <p><input type="number" id="amount" placeholder="Enter Amount"></p>
+        <button onclick='saveData()'>Submit</button>
+        <p><b>Current Balance: ₹<span id='spBalance'>${user.balance}</span></b></p>
+      `;
+
+      document.getElementById("root").innerHTML = str;
+    }
+
+    function addUser() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+      let dob = document.getElementById("dob").value;
+
+      users.push({ name, email, password, dob, balance: 0 });
+      showLogin();
+    }
+
+    function chkUser() {
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].email === email && users[i].password === password) {
+          user = users[i];
+          home();
+          return;
+        }
+      }
+      document.getElementById("msg").innerHTML = "Access Denied";
+    }
+
+    function showForm() {
+      let str = `
+        <h2>Register</h2>
+        <p><input type="text" id="name" placeholder="Name"></p>
+        <p><input type="text" id="email" placeholder="Email"></p>
+        <p><input type="password" id="password" placeholder="Password"></p>
+        <p><input type="date" id="dob"></p>
+        <p><button onclick='addUser()'>Register</button></p>
+        <p>Already a member? <button onclick='showLogin()'>Login</button></p>
+      `;
+      document.getElementById("root").innerHTML = str;
+    }
+
+    function showLogin() {
+      let str = `
+        <h2>Login</h2>
+        <div id='msg'></div>
+        <p><input id="email" type="text" placeholder="Email"></p>
+        <p><input id="password" type="password" placeholder="Password"></p>
+        <button onclick='chkUser()'>Login</button>
+        <p><button onclick='showForm()'>Create Account</button></p>
+      `;
+      document.getElementById("root").innerHTML = str;
+    }
+
+    showLogin();
+  </script>
+
+  <h1>HDFC Bank</h1>
+  <hr>
+  <div id="root"></div>
+  <hr>
+  <p>© 2025. All rights reserved.</p>
 </body>
 </html>
