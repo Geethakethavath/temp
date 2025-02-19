@@ -27,7 +27,7 @@
       const showProducts = () => {
         let str = "";
         products.map((value) => {
-          str += `<div>${value.id}-${value.name}-${value.price}-<button onclick='addToCart(${value.id})'>Add to Cart</button></div>`;
+          str += `<div>${value.id}-${value.name}-${value.price}-<button onclick='addToCart(${value.id})'>Add to Cart </button></div>`;
         });
         divProducts.innerHTML = str;
       };
