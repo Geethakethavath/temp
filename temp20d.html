@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let a=0  
+        console.log(typeof(a))
+        a?console.log("true"):console.log("false")
+        //return false as they are a=false{boolean} ,a= 0:number,a=null :undefined, let a :not initailized
+        let r=a || 10
+         //if a=no value,a=0,null,false it will print other value
+        console.log(r)
+        let r1=a??10
+        //prints a value,if a value is not given or a=null it prints other value(nullish operater)
+        console.log(r1)
+        let cart=
+        {  
+            1:0,
+             3:7,
+            "a":32
+        }
+        let r2=cart.a??10
+        let r3=cart[3]??10
+        let r4=cart[1]??10
+        let r5=cart[1]||10
+        console.log(r2,r3,r4,r5)
+    </script>
+</body>
+</html>  
